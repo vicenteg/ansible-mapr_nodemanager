@@ -1,8 +1,6 @@
 ---
 # defaults file for mapr-nodemanager
 
-yarn_enabled: True 
-
 proxy_env: { }
 
 mapr_version: v4.0.2
