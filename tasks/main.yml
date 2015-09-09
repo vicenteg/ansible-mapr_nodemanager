@@ -1,6 +1,7 @@
 ---
 # tasks file for mapr-nodemanager
 - name: install mapr-nodemanager packages
+  sudo_user: root
   yum: name='{{item}}' state=present
   with_items:
     - mapr-nodemanager
