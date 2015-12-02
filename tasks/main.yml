@@ -6,3 +6,13 @@
   with_items:
     - mapr-nodemanager
   environment: proxy_env
+
+- name: find hadoop version
+  shell: rpm -qa --queryformat '%{VERSION} %{RELEASE}' mapr-hadoop-core | awk '{ print substr($0,0,5) }'
+  register: hadoop_version
+  changed_when: false
+
+- name: configure yarn.log-aggregation-enable
+  sudo_user: root
+  hadoop_properties: file=/opt/mapr/hadoop/hadoop-{{hadoop_version.stdout}}/etc/hadoop/yarn-site.xml name=yarn.log-aggregation-enable value=true
+  notify: restart nodemanager
