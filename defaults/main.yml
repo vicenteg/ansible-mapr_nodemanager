@@ -4,3 +4,5 @@
 proxy_env: { }
 
 mapr_version: v4.0.2
+
+configure_log_aggregation: False

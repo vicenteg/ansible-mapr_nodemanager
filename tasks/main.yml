@@ -16,3 +16,4 @@
   sudo_user: root
   hadoop_properties: file=/opt/mapr/hadoop/hadoop-{{hadoop_version.stdout}}/etc/hadoop/yarn-site.xml name=yarn.log-aggregation-enable value=true
   notify: restart nodemanager
+  when: configure_log_aggregation
