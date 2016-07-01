@@ -1,7 +1,8 @@
 ---
 # tasks file for mapr-nodemanager
 - name: install mapr-nodemanager packages
-  sudo_user: root
+  become: yes
+  become_user: root
   yum: name='{{item}}' state=present
   with_items:
     - mapr-nodemanager
@@ -13,7 +14,8 @@
   changed_when: false
 
 - name: configure yarn.log-aggregation-enable
-  sudo_user: root
+  become: yes
+  become_user: root
   hadoop_properties: file=/opt/mapr/hadoop/hadoop-{{hadoop_version.stdout}}/etc/hadoop/yarn-site.xml name=yarn.log-aggregation-enable value=true
   notify: restart nodemanager
   when: configure_log_aggregation
