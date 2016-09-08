@@ -6,7 +6,6 @@
   yum: name='{{item}}' state=present
   with_items:
     - mapr-nodemanager
-  environment: '{{proxy_env}}'
 
 - name: find hadoop version
   shell: rpm -qa --queryformat '%{VERSION} %{RELEASE}' mapr-hadoop-core | awk '{ print substr($0,0,5) }'
